@@ -1,0 +1,62 @@
+feature,area,priority,original,clone,notes
+Sign up / log in via Salesforce OAuth,onboarding,must,yes,no,Salesforce is the identity provider — no separate email/password
+Connect a Salesforce Production org,onboarding,must,yes,no,OAuth flow with token storage
+Connect a Salesforce Sandbox org,onboarding,must,yes,no,Must support login.salesforce.com and test.salesforce.com
+Dashboard with recent jobs and status,navigation,must,yes,no,Central hub for all activity
+Upload CSV file as import source,data loading,must,yes,no,Drag-and-drop or click-to-browse upload
+Upload Excel file as import source,data loading,must,yes,no,.xlsx parsing with sheet selection
+Select Salesforce object (standard + custom),data loading,must,yes,no,Searchable picklist of all objects in the org
+Choose operation type (Insert / Update / Upsert / Delete / Export),data loading,must,yes,no,Radio or dropdown selection
+Auto-map source columns to Salesforce fields,field mapping,must,yes,no,Match by API name or label
+Manual field mapping adjustment,field mapping,must,yes,no,Drag-drop or dropdown per row
+Lookup field resolution (match by name or external ID),field mapping,must,yes,no,Critical for imports without Salesforce IDs
+Save field mappings as reusable templates,field mapping,must,yes,no,Persist mapping config per job
+Data preview before import (first N rows),safety,must,yes,no,Show mapped data in table form
+Sample / test run (import subset),safety,must,yes,no,Run on small batch before full load
+Job execution with real-time progress,execution,must,yes,no,Progress bar + counters + live log
+Job results summary (success + error counts),execution,must,yes,no,Post-run results page
+Error records table with Salesforce error codes,execution,must,yes,no,Row-level error detail with codes
+Download results / errors as CSV,execution,must,yes,no,Export for offline review
+Retry failed records,execution,must,yes,no,Re-run only the failed subset
+Rollback inserted records (one-click delete),safety,must,yes,no,Delete records created by a specific insert job
+Multi-object import (parent + child in one job),multi-object,must,yes,no,Core differentiator — load Account + Contact in one pass
+Parent-child load ordering,multi-object,must,yes,no,Automatic dependency resolution
+ID remapping for child lookups ("Magic ID"),multi-object,must,yes,no,Map new parent IDs to child lookup fields
+Salesforce-to-Salesforce migration (org to org),migration,must,yes,no,Direct org-to-org without CSV intermediary
+Reusable migration templates,migration,must,yes,no,Save and re-run after sandbox refresh
+SOQL filters on migration source,migration,must,yes,no,Targeted subset extraction
+File and attachment migration (ContentVersion),migration,must,yes,no,Move Files and Attachments alongside records
+Automated daily backups,backup,must,yes,no,Set-and-forget backup policies per object
+Connect to Amazon S3 as source,connectors,should,yes,no,Pull files from S3 buckets
+Connect to SFTP server as source,connectors,should,yes,no,Wildcard file matching and post-processing rename
+Connect to PostgreSQL / Heroku Postgres as source,connectors,should,yes,no,Direct SQL query against external DB
+Connect to Google Drive as source,connectors,should,yes,no,OAuth to Google + file selection
+Connect to Google Sheets as source,connectors,should,yes,no,Direct read from spreadsheet
+Connect to SharePoint as source,connectors,should,yes,no,Microsoft 365 OAuth integration
+Connect to Snowflake as source,connectors,should,yes,no,Cloud data warehouse connector
+Connect to Azure SQL as source,connectors,should,yes,no,Microsoft SQL cloud database connector
+Inline formula transformations (IF / ISNULL / CONTAINS / CONCAT),transformations,should,yes,no,Clean data on the fly without Excel prep
+Row-level filtering rules (visual rule builder),transformations,should,yes,no,Include/exclude rows by condition
+SQL WHERE clause for database sources,transformations,should,yes,no,Server-side filtering before data transfer
+Deduplication rules,transformations,should,yes,no,Prevent duplicate record creation
+Job scheduling (15min / hourly / daily / weekly / custom cron),scheduling,should,yes,no,Recurring automated jobs
+Schedule timezone configuration,scheduling,should,yes,no,Jobs run at correct local time
+Incremental delta backup (track inserts / updates / deletes),backup,should,yes,no,API-efficient after initial full backup
+Backup retention up to 365 days,backup,should,yes,no,Configurable retention slider
+Gzip compression for backup storage,backup,should,yes,no,Reduce storage footprint
+Record-level rollback from backup snapshot,backup,should,yes,no,Surgical restore of specific records
+Pre-import snapshot (auto-backup before job runs),backup,should,yes,no,Safety net before every data operation
+Automation control (deactivate SF Flows/Triggers/Validation Rules during import),automation,could,yes,no,Toggle via Metadata API — reactivate after
+Flows / data pipelines (chain multiple jobs sequentially),flows,could,yes,no,Multi-step orchestration with error handling
+Flow error handling (stop / skip / retry per step),flows,could,yes,no,Configurable per-step behavior
+Salesforce API usage monitoring,monitoring,could,yes,no,Track API calls vs governor limits
+Email notifications on job success / failure / schedule miss,notifications,could,yes,no,Configurable per event type
+Team / user management with roles,team,could,yes,no,Admin vs User role-based access
+Export data from Salesforce to CSV or external target,data loading,could,yes,no,Reverse direction — extract data
+Backup for Salesforce Files (ContentVersion),backup,could,yes,no,Files alongside object records
+Field-level comparison (before/after in restore),backup,could,yes,no,Side-by-side diff for targeted restore
+Sandbox seeding (targeted data subset to sandbox),migration,could,yes,no,SOQL-filtered production-to-sandbox copy
+Partner / ISV locked templates,partner,skip,yes,no,Requires ISV program and partner relationships
+Partner multi-org management (unlimited customer orgs),partner,skip,yes,no,Enterprise licensing model — business decision not feature
+Partner usage analytics across customer orgs,partner,skip,yes,no,ISV-specific reporting
+AppExchange listing and security review,distribution,skip,yes,no,Salesforce ecosystem requirement — not a product feature
